@@ -21,6 +21,7 @@ dependencies:
   flutter_native_splash: ^2.3.1
   flutter_launcher_icons: ^0.13.1
   smooth_page_indicator: ^1.1.0
+  flutter_markdown: ^0.6.18+3
 
   # Icons
   iconsax: ^0.0.8
@@ -77,6 +78,7 @@ flutter:
     - assets/icons/payment_methods/
     - assets/images/on_boarding_images/
     - assets/fitness_app/
+    - assets/terms_of_services/terms_of_service.md
 
   #--------------- LOCAL FONTS ------------------#
   fonts:
