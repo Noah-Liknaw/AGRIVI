@@ -22,7 +22,6 @@ class LoginScreen extends StatelessWidget {
           children: [
             //head
             TLoginHeader(),
-
             //form
             TLoginForm(),
             // Divider
