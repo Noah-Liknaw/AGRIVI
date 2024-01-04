@@ -71,4 +71,32 @@ class TTexts {
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
   static const String homeAppbarSubTitle = "Taimoor Sikander";
+  // first Page Texts
+  static const String appname = "AGRIVI";
+  static const String moto = "collet Your farming data in one place ";
+  static const String signupWithE = "Signup with email";
+  static const String signupWithG = "Signup with Google";
+  static const String signupWithF = "Signup with Facebook";
+  static const String login = "Log in";
+  static const String signupWithA = "Signup with Apple";
+
+  // add farm screen text
+
+  static const String wellcome = "Wellcome to AGRIVI";
+  static const String greeting =
+      "If you are a farm manager add your farm below,If you are an advisor or a crew memebr,please request an invite to a AGRIVI,from your respective farm.";
+  static const String farmQuestion = "Do you manage/own a farm?";
+  static const String addFarm = "Add Farm";
+
+  // InvitePeople texts
+  static const String invite = "Invite people";
+  static const String crew = "Crew";
+  static const String crewDescription =
+      "Crew members can excute and track jobs view and add field notes";
+  static const String advisor = "Advisor";
+  static const String advisorDescription =
+      "Advisor members can recommend a jobs track jobs view and add field notes";
+  static const String manager = "Manager";
+  static const String manaerDescription =
+      "Manager members have full admin access  and can add and edit all datas";
 }
