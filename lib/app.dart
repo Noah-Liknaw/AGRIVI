@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:t_store/features/authentication/screens/addFarm/addfarm.dart';
-import 'package:t_store/features/authentication/screens/addFarm/invitePeople.dart';
+
 import 'package:t_store/features/authentication/screens/onboarding/onboarding.dart';
-import 'package:t_store/features/authentication/screens/signupoptionscreen/signupOptions.dart';
+
 import 'package:t_store/utils/constants/text_strings.dart';
 import 'package:t_store/utils/theme/theme.dart';
 
