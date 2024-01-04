@@ -116,6 +116,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               Checkbox(
                   value: initialValue,
+                activeColor: const Color.fromARGB(212, 50, 121, 20),
                   onChanged: (value) {
                     checkBoxOnchange(value!);
                   }),
