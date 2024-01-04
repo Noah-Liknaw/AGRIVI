@@ -75,6 +75,7 @@ flutter:
     - assets/images/products/
     - assets/icons/categories/
     - assets/images/animations/
+    - assets/images/background_images/
     - assets/icons/payment_methods/
     - assets/images/on_boarding_images/
     - assets/fitness_app/

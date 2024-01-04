@@ -257,4 +257,10 @@ class TImages {
   static const String paytm = "assets/icons/payment_methods/paytm.png";
   static const String successfulPaymentIcon =
       "assets/icons/payment_methods/successful_payment_icon.png";
+
+  // Signup option bbackground image
+  static const String bgImage =
+      "assets/images/background_images/signup_bgimage.jpg";
+  static const String logoTransparent =
+      "assets/logos/AGRIV_logo_transparent.png";
 }

@@ -1,4 +1,3 @@
-
 class TSizes {
   // Padding and margin sizes
   static const double xs = 4.0;
@@ -67,7 +66,8 @@ class TSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // SignUp options Buttons Size
+  static const double signupOptionButtonWidth = 320;
+  static const double signupOptionButtonHeight = 43;
 }
-
-
-
