@@ -43,25 +43,30 @@ class SignUpMethodsButton extends StatelessWidget {
 
 class SignUpMethodsButtonRed extends StatelessWidget {
   final String text;
-  const SignUpMethodsButtonRed({super.key, required this.text});
+  final VoidCallback onpressed;
+  const SignUpMethodsButtonRed(
+      {super.key, required this.text, required this.onpressed});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: TSizes.signupOptionButtonWidth,
-      height: TSizes.signupOptionButtonHeight,
-      decoration: BoxDecoration(
-          color: Color.fromARGB(212, 50, 121, 20),
-          borderRadius: BorderRadius.circular(TSizes.borderRadiusMd)),
-      child:  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text(
-          text,
-          style: const TextStyle(
-              fontSize: TSizes.fontSizeMd,
-              fontWeight: FontWeight.w800,
-              color: TColors.white),
-        ),
-      ]),
+    return GestureDetector(
+      onTap: onpressed,
+      child: Container(
+        width: TSizes.signupOptionButtonWidth,
+        height: TSizes.signupOptionButtonHeight,
+        decoration: BoxDecoration(
+            color: const Color.fromARGB(212, 50, 121, 20),
+            borderRadius: BorderRadius.circular(TSizes.borderRadiusMd)),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(
+            text,
+            style: const TextStyle(
+                fontSize: TSizes.fontSizeMd,
+                fontWeight: FontWeight.w800,
+                color: TColors.white),
+          ),
+        ]),
+      ),
     );
   }
 }

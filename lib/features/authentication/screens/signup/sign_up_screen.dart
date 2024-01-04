@@ -5,6 +5,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:http/http.dart';
+import 'package:t_store/features/authentication/screens/addFarm/addfarm.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/custom_continue_button.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/terms_of_services.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/text_field.dart';
@@ -143,7 +144,9 @@ class _SignupScreenState extends State<SignupScreen> {
             height: size.height * 0.02,
           ),
           CustomContinueButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(AddFarm());
+            },
             width: size.width,
             height: size.height * 0.05,
             text: 'Continue',

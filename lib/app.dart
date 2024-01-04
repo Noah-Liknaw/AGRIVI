@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:t_store/features/authentication/screens/login2/login_screen.dart';
 import 'package:t_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:t_store/features/authentication/screens/signup/sign_up_screen.dart';
+import 'package:t_store/features/authentication/screens/signupoptionscreen/signupOptions.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 import 'package:t_store/utils/theme/theme.dart';
 
@@ -17,7 +18,7 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       // home: const OnBoardingScreen(),
-      home: SignupScreen(),
+      home: SignUpOptions(),
       // home: LoginScreen(),
     );
   }

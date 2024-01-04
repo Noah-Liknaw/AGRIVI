@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:t_store/features/authentication/screens/login2/login_screen.dart';
+import 'package:t_store/features/authentication/screens/signup/sign_up_screen.dart';
 import 'package:t_store/features/authentication/screens/signupoptionscreen/widgets/appname.dart';
 import 'package:t_store/features/authentication/screens/signupoptionscreen/widgets/signup_buttons.dart';
-import 'package:t_store/utils/constants/colors.dart';
+
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
@@ -40,7 +44,12 @@ class SignUpOptions extends StatelessWidget {
           const SizedBox(
             height: TSizes.buttonWidth + 30,
           ),
-          const SignUpMethodsButtonRed(text: TTexts.signupWithE,),
+          SignUpMethodsButtonRed(
+            text: TTexts.signupWithE,
+            onpressed: () {
+              Get.to(SignupScreen());
+            },
+          ),
           const SizedBox(
             height: TSizes.spaceBtwInputFields,
           ),
@@ -69,7 +78,9 @@ class SignUpOptions extends StatelessWidget {
             height: TSizes.iconMd + 5,
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(const LoginScreen());
+              },
               child: const Text(
                 TTexts.login,
                 style: TextStyle(
