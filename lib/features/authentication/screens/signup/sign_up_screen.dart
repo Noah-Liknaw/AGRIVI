@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +8,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:http/http.dart';
 import 'package:t_store/features/authentication/screens/addFarm/addfarm.dart';
+import 'package:t_store/features/authentication/screens/login2/widgets/main_page.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/custom_continue_button.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/terms_of_services.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/text_field.dart';
@@ -28,6 +31,48 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    firstNameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  Future signUp() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Color.fromARGB(212, 50, 121, 20),
+            ),
+          );
+        });
+    // auth
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+
+    // add user info
+    await addUserData(firstNameController.text.trim(),
+        lastNameController.text.trim(), 'user');
+    Get.off(MainPage());
+  }
+
+  Future addUserData(String firstName, String lastName, String userType) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first_name': firstName,
+      'last_name': lastName,
+      'userType': userType,
+    });
+  }
+
   void showTermsAndService() {
     showDialog(
         context: context,
@@ -36,6 +81,14 @@ class _SignupScreenState extends State<SignupScreen> {
             ));
   }
 
+//  intial data
+  Map userData = {
+    'userId': '',
+    'userName': '',
+    'userEmail': '',
+    "Password": '',
+    "UserType": ''
+  };
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -57,6 +110,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               CustomeTextField(
                   textFormField: TextFormField(
+                    controller: firstNameController,
                     decoration: const InputDecoration(
                         enabledBorder: InputBorder.none,
                         border: InputBorder.none,
@@ -69,6 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: size.height * 0.07),
               CustomeTextField(
                   textFormField: TextFormField(
+                    controller: lastNameController,
                     decoration: const InputDecoration(
                         enabledBorder: InputBorder.none,
                         border: InputBorder.none,
@@ -86,6 +141,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           CustomeTextField(
             textFormField: TextFormField(
+              controller: emailController,
               decoration: const InputDecoration(
                   enabledBorder: InputBorder.none,
                   border: InputBorder.none,
@@ -101,6 +157,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           CustomeTextField(
               textFormField: TextFormField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
                     enabledBorder: InputBorder.none,
@@ -116,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               Checkbox(
                   value: initialValue,
-                activeColor: const Color.fromARGB(212, 50, 121, 20),
+                  activeColor: const Color.fromARGB(212, 50, 121, 20),
                   onChanged: (value) {
                     checkBoxOnchange(value!);
                   }),
@@ -146,6 +203,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           CustomContinueButton(
             onPressed: () {
+              signUp();
               Get.to(AddFarm());
             },
             width: size.width,
@@ -156,4 +214,19 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     ));
   }
+}
+
+class User {
+  final String UserID;
+  final String Name;
+  final String Email;
+  final String Password;
+  final String UserType;
+  User({
+    required this.UserID,
+    required this.Name,
+    required this.Email,
+    required this.Password,
+    required this.UserType,
+  });
 }

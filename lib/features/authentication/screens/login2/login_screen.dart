@@ -1,15 +1,49 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:t_store/features/authentication/screens/login2/widgets/main_page.dart';
 import 'package:t_store/features/authentication/screens/signup/widgets/custom_continue_button.dart';
-import 'package:t_store/features/authentication/screens/signup/widgets/text_field.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
 import 'widgets/customTextfield.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
+
+  Future<void> signin() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Color.fromARGB(212, 50, 121, 20),
+            ),
+          );
+        });
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+    Get.off(MainPage());
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +65,7 @@ class LoginScreen extends StatelessWidget {
             ),
             CustomTextField(
                 textFormField: TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                       enabledBorder: InputBorder.none,
                       border: InputBorder.none,
@@ -46,6 +81,7 @@ class LoginScreen extends StatelessWidget {
             ),
             CustomTextField(
                 textFormField: TextFormField(
+                  controller: passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -78,7 +114,7 @@ class LoginScreen extends StatelessWidget {
               height: size.height * 0.05,
             ),
             CustomContinueButton(
-              onPressed: () {},
+              onPressed: signin,
               width: size.width,
               height: size.height * 0.05,
               text: 'Continue',

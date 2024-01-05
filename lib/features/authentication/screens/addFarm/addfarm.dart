@@ -65,7 +65,7 @@ class AddFarm extends StatelessWidget {
               SignUpMethodsButtonRed(
                 text: TTexts.addFarm,
                 onpressed: () {
-                  Get.to(const AddFarmForm());
+                  Get.to(AddFarmForm());
                 },
               ),
             ],

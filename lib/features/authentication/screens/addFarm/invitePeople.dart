@@ -1,12 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:t_store/features/authentication/screens/addFarm/widget/listItems.dart';
+import 'package:t_store/features/authentication/screens/login2/login_screen.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 
 class InvitePeopleScreen extends StatelessWidget {
   const InvitePeopleScreen({super.key});
+  Future signout() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,18 @@ class InvitePeopleScreen extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                signout();
+                Get.off(LoginScreen());
+              },
+            ),
+            const SizedBox(
+              width: 20,
+            )
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: TSizes.iconSm),
