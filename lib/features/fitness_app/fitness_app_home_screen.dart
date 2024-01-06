@@ -81,8 +81,7 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
               animationController.reverse().then<dynamic>((_) {
                 if (mounted) {
                   setState(() {
-                    tabBody =
-                        MyDiaryScreen(animationController: animationController);
+                    
                   });
                 }
                 return;
